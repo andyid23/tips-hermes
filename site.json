@@ -138,6 +138,22 @@
       }
     },
     {
+      "id": "item-5cc3374b-46d7-4d11-8ba9-395ed69df0bb",
+      "indent": 0,
+      "location": "pages/item-5cc3374b-46d7-4d11-8ba9-395ed69df0bb/index.html",
+      "slug": "rangkuman-model-konfigurasi",
+      "order": 0,
+      "parent": null,
+      "title": "Rangkuman Sesi: Model, Konfigurasi, Env, Instalasi, Cara Pakai, Langkah & Rekomendasi",
+      "description": "",
+      "metadata": {
+        "created": 1793163729,
+        "updated": 1793163729,
+        "images": [],
+        "videos": []
+      }
+    },
+    {
       "id": "item-rangkuman-sesi-free-claude-code",
       "indent": 0,
       "location": "pages/rangkuman_sesi.md",
