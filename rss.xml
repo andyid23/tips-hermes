@@ -37,5 +37,12 @@
       <guid>https://localhost/tips-hermes/fcc-claude-praw-opencode</guid>
       <pubDate>Wed, 28 Oct 2026 04:36:53 GMT</pubDate>
     </item>
+    <item>
+      <title>Konfigurasi SSH Tanpa Password via Cloudflare Tunnel</title>
+      <link>https://localhost/tips-hermes/config-ssh-cloudflare-tunnel</link>
+      <description>Panduan Konfigurasi SSH Tanpa Password via Cloudflare Tunnel Halaman ini merangkum langkah-langkah, penyebab kegagalan umum, serta rekomendasi keamanan untuk mengkonfigurasi akses SSH tanpa password ( public key authentication ) ke server yang menggunakan Cloudflare Tunnel ( home.pesanweb.my.id ) pada port non-standar (Port 2222). 1. Poin Penting Konfigurasi SSH Menyalin Public Key ke Server: Kunci publik client (isi file ~/.ssh/id_ed25519.pub ) harus didaftarkan ke file ~/.ssh/authorized_key...</description>
+      <guid>https://localhost/tips-hermes/config-ssh-cloudflare-tunnel</guid>
+      <pubDate>Wed, 28 Oct 2026 04:37:58 GMT</pubDate>
+    </item>
   </channel>
 </rss>
