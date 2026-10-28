@@ -23,5 +23,12 @@
       <guid>https://localhost/tips-hermes/cmd-jev-nudge</guid>
       <pubDate>Wed, 28 Oct 2026 04:22:17 GMT</pubDate>
     </item>
+    <item>
+      <title>Cek Repo Dulu Sebelum Buat Situs HAXCMS</title>
+      <link>https://localhost/tips-hermes/haxcms-cek-repo-dulu</link>
+      <description>Masalah Saat diminta “rangkum ke situs tips-hermes”, situs itu sudah ada sebagai repo GitHub ( andyid23/tips-hermes ) dengan branch master (sumber) dan gh-pages (hasil build). Karena tidak dicek dulu, sempat dibuat situs baru di scratch lewat hax site create . Push-nya gagal dan hasilnya nyaris menjadi dua riwayat yang berbeda. Gejala yang muncul hax site create berhasil, tetapi repo tujuan sudah berisi situs lain. GitHub API menjawab 422 Repository creation failed dengan pesan “name already ...</description>
+      <guid>https://localhost/tips-hermes/haxcms-cek-repo-dulu</guid>
+      <pubDate>Wed, 28 Oct 2026 04:34:36 GMT</pubDate>
+    </item>
   </channel>
 </rss>
