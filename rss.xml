@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>tips-hermes</title>
+    <link>https://localhost/_sites/tips-hermes/</link>
+    <description></description>
+    <copyright>Copyright (C) 2026 https://localhost/_sites/tips-hermes</copyright>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Oct 2026 04:12:24 GMT</lastBuildDate>
+    <generator>HAXcms NodeJS</generator>
+    <atom:link href="https://localhost/_sites/tips-hermes/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Welcome to tips-hermes</title>
+      <link>https://localhost/_sites/tips-hermes/welcome</link>
+      <description>Welcome to your new HAX site! Click edit on the top bar to get started What can I do? We&apos;ve got a ton of blocks that are easy to use and get a lot done with little effort, so much in fact we made a little video exploring some of them! Here&apos;s a list of just a few things to get started, or if your a pro, delete this content and have fun! Edit this content by hitting &quot;Edit page&quot; above Hit enter in a paragraph of text to add another one Click &quot;Merlin&quot; to see a list of all the things you can do Tr...</description>
+      <guid>https://localhost/_sites/tips-hermes/welcome</guid>
+      <pubDate>Wed, 28 Oct 2026 04:12:24 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
