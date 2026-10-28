@@ -136,6 +136,20 @@
         "images": [],
         "videos": []
       }
+    },
+    {
+      "id": "item-rangkuman-sesi-free-claude-code",
+      "indent": 0,
+      "location": "pages/rangkuman_sesi.md",
+      "slug": "rangkuman-sesi-free-claude-code-haxcms",
+      "order": 5,
+      "parent": null,
+      "title": "Rangkuman Sesi - Free Claude Code & HAXCMS",
+      "description": "Ringkasan agent, fcc-server, HAXCMS, Command Code + jev-nudge",
+      "metadata": {
+        "created": 1793160800,
+        "updated": 1793160800
+      }
     }
   ]
 }
