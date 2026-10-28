@@ -15,6 +15,8 @@ Managed files (feeds, search indexes, manifests, and this `llms.txt`) are genera
 - [Welcome to tips-hermes](https://localhost/tips-hermes/pages/item-e9ae95a3-adb0-4053-ac7a-1522f320f55a/index.md)
 - [Cara Pakai cmd + jev-nudge](https://localhost/tips-hermes/pages/item-5f09a61f-3ead-41aa-95ba-f218bea0e851/index.md)
 - [Cek Repo Dulu Sebelum Buat Situs HAXCMS](https://localhost/tips-hermes/pages/item-2888d0c4-fd6c-4331-ac0b-9b3cccb0ff12/index.md)
+- [Cara Pakai fcc-claude, Plugin PRAW HAX, OpenCode & Langkah Instalasi](https://localhost/tips-hermes/pages/item-0f546a47-a4e2-416b-9747-6be73c0d63f2/index.md)
+- [Konfigurasi SSH Tanpa Password via Cloudflare Tunnel](https://localhost/tips-hermes/pages/item-101c5a71-e8ac-4e19-a7d7-ab1818f3b4a5/index.md)
 
 ## Optional
 - [Search index](https://localhost/tips-hermes/lunrSearchIndex.json): Lunr corpus for quick full-text retrieval.

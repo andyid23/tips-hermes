@@ -1,0 +1,80 @@
+<h2>Panduan Konfigurasi SSH Tanpa Password via Cloudflare Tunnel</h2>
+
+<p>Halaman ini merangkum langkah-langkah, penyebab kegagalan umum, serta rekomendasi keamanan untuk mengkonfigurasi akses SSH tanpa password (<em>public key authentication</em>) ke server yang menggunakan <strong>Cloudflare Tunnel</strong> (<code>home.pesanweb.my.id</code>) pada port non-standar (Port 2222).</p>
+
+<hr>
+
+<h3>1. Poin Penting Konfigurasi SSH</h3>
+
+<ul>
+  <li><strong>Menyalin Public Key ke Server:</strong> Kunci publik client (isi file <code>~/.ssh/id_ed25519.pub</code>) harus didaftarkan ke file <code>~/.ssh/authorized_keys</code> di server tujuan.</li>
+  <li><strong>Izin File (Permissions):</strong> File dan direktori SSH di server harus memiliki permission yang tepat agar tidak ditolak oleh daemon SSH:
+    <ul>
+      <li>Direktori <code>~/.ssh</code>: <code>chmod 700 ~/.ssh</code></li>
+      <li>File <code>authorized_keys</code>: <code>chmod 600 ~/.ssh/authorized_keys</code></li>
+    </ul>
+  </li>
+  <li><strong>ProxyCommand Cloudflare Tunnel:</strong> Karena domain di-routing melalui Cloudflare Tunnel, IP publik domain (misal <code>104.21.15.39</code>) adalah Anycast CDN Cloudflare yang menolak koneksi direct TCP SSH. Sambungan harus menggunakan <code>ProxyCommand</code> yang memanggil binary <code>cloudflared</code>.</li>
+</ul>
+
+<hr>
+
+<h3>2. Kesalahan &amp; Penyebab SSH Ditolak</h3>
+
+<p>Berikut adalah beberapa kendala yang terjadi saat percobaan awal beserta analisis alasannya:</p>
+
+<ol>
+  <li><strong>Koneksi Langsung Tanpa Proxy Timeout:</strong>
+    <p>Perintah seperti <code>ssh -p 2222 root@home.pesanweb.my.id</code> gagal / timeout karena SSH mencoba menghubungi IP Cloudflare CDN langsung di port 2222. IP Cloudflare tidak membuka port TCP SSH secara terbuka.</p>
+  </li>
+  <li><strong>Permission Denied (publickey, password):</strong>
+    <p>Terjadi karena public key milik client belum dimasukkan ke <code>authorized_keys</code> milik user <code>root</code> di server. Karena kunci ditolak, SSH mencoba fallback ke autentikasi password, namun di lingkungan non-interaktif/headless (tanpa <code>/dev/tty</code>), permintaan password gagal total.</p>
+  </li>
+  <li><strong>Mismatched Public Key:</strong>
+    <p>Key yang dipasang di server berbeda dengan key milik client yang aktif di <code>~/.ssh/id_ed25519</code>. Selalu pastikan string public key yang dicopy cocok sepenuhnya.</p>
+  </li>
+</ol>
+
+<hr>
+
+<h3>3. Langkah-Langkah Konfigurasi yang Benar</h3>
+
+<h4>Langkah A: Konfigurasi di Sisi Server (Target)</h4>
+<pre><code># 1. Buat direktori .ssh jika belum ada
+mkdir -p ~/.ssh
+
+# 2. Tambahkan isi public key client ke authorized_keys
+echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIRENLguqILk+3TYt2mX9lXNbZ3E/1o+jOiWI0EMf7uS hermes-agent-access" &gt;&gt; ~/.ssh/authorized_keys
+
+# 3. Set permission file
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+</code></pre>
+
+<h4>Langkah B: Konfigurasi di Sisi Client (`~/.ssh/config`)</h4>
+<p>Tambahkan entri berikut pada file <code>~/.ssh/config</code> lokal:</p>
+
+<pre><code>Host home.pesanweb.my.id
+    User root
+    Port 2222
+    ProxyCommand cloudflared access ssh --hostname %h
+    IdentityFile ~/.ssh/id_ed25519
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    IdentitiesOnly yes
+</code></pre>
+
+<h4>Langkah C: Uji Coba Login</h4>
+<p>Jalankan perintah berikut untuk login tanpa perlu password:</p>
+<pre><code>ssh home.pesanweb.my.id
+</code></pre>
+
+<hr>
+
+<h3>4. Rekomendasi Keamanan</h3>
+
+<ul>
+  <li><strong>Non-aktifkan Password Authentication:</strong> Ubah konfigurasi <code>/etc/ssh/sshd_config</code> di server menjadi <code>PasswordAuthentication no</code> dan <code>PubkeyAuthentication yes</code>, lalu restart SSHD (<code>systemctl restart sshd</code>). Ini mencegah serangan brute-force password.</li>
+  <li><strong>Gunakan Cloudflare Tunnel Persistent Service:</strong> Pastikan <code>cloudflared</code> terpasang sebagai systemd service (<code>cloudflared service install &lt;token&gt;</code>) agar tunnel tetap aktif otomatis setelah server direboot.</li>
+  <li><strong>Tidak Perlu Service Client Background:</strong> Client tidak perlu menjalankan daemon background seperti <code>cloudflared access tcp ... &amp;</code>, cukup gunakan <code>ProxyCommand</code> di SSH config agar koneksi dipanggil secara <em>on-demand</em> saat melakukan SSH.</li>
+</ul>

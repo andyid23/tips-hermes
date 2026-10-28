@@ -30,5 +30,19 @@
       <guid>https://localhost/tips-hermes/haxcms-cek-repo-dulu</guid>
       <pubDate>Wed, 28 Oct 2026 04:34:36 GMT</pubDate>
     </item>
+    <item>
+      <title>Cara Pakai fcc-claude, Plugin PRAW HAX, OpenCode &amp; Langkah Instalasi</title>
+      <link>https://localhost/tips-hermes/fcc-claude-praw-opencode</link>
+      <description>&amp;nbsp;# Rangkuman Sesi: Cara Pakai fcc-claude, Plugin PRAW HAX, OpenCode &amp;amp; Langkah Instalasi\n&amp;nbsp;\n&amp;nbsp;Tanggal: 2025-10-28\n&amp;nbsp;\n&amp;nbsp;## Point Penting\n&amp;nbsp;\n&amp;nbsp;### 1) Free Claude Code Ecosystem\n&amp;nbsp;- **Agents**: Claude Code, Codex, OpenCode (gratis), Pi, Cline\n&amp;nbsp;- **Proxy**: `fcc-server` jalan di `http://127.0.0.1:8082`, admin UI di `http://127.0.0.1:8082/admin`\n&amp;nbsp;- **Endpoint**: `/claude`, `/codex`, `/opencode`, `/pi`, `/cline` (format OpenAI-compatible `/v1/c...</description>
+      <guid>https://localhost/tips-hermes/fcc-claude-praw-opencode</guid>
+      <pubDate>Wed, 28 Oct 2026 04:36:53 GMT</pubDate>
+    </item>
+    <item>
+      <title>Konfigurasi SSH Tanpa Password via Cloudflare Tunnel</title>
+      <link>https://localhost/tips-hermes/config-ssh-cloudflare-tunnel</link>
+      <description>Panduan Konfigurasi SSH Tanpa Password via Cloudflare Tunnel Halaman ini merangkum langkah-langkah, penyebab kegagalan umum, serta rekomendasi keamanan untuk mengkonfigurasi akses SSH tanpa password ( public key authentication ) ke server yang menggunakan Cloudflare Tunnel ( home.pesanweb.my.id ) pada port non-standar (Port 2222). 1. Poin Penting Konfigurasi SSH Menyalin Public Key ke Server: Kunci publik client (isi file ~/.ssh/id_ed25519.pub ) harus didaftarkan ke file ~/.ssh/authorized_key...</description>
+      <guid>https://localhost/tips-hermes/config-ssh-cloudflare-tunnel</guid>
+      <pubDate>Wed, 28 Oct 2026 04:37:58 GMT</pubDate>
+    </item>
   </channel>
 </rss>
