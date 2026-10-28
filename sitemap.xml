@@ -24,4 +24,10 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://localhost/tips-hermes/config-ssh-cloudflare-tunnel</loc>
+    <lastmod>2026-10-28T04:37:58.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
 </urlset>
