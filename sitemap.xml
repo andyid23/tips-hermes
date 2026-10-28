@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://localhost/_sites/tips-hermes/welcome</loc>
+    <loc>https://localhost/tips-hermes/welcome</loc>
     <lastmod>2026-10-28T04:12:24.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://localhost/tips-hermes/cmd-jev-nudge</loc>
+    <lastmod>2026-10-28T04:22:17.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
