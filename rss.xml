@@ -17,6 +17,13 @@
       <pubDate>Wed, 28 Oct 2026 04:12:24 GMT</pubDate>
     </item>
     <item>
+      <title>Rangkuman Sesi - Free Claude Code &amp; HAXCMS</title>
+      <link>https://localhost/tips-hermes/rangkuman-sesi-free-claude-code-haxcms</link>
+      <description># Rangkuman Sesi - Free Claude Code &amp; HAXCMS ## Agent yang Digunakan - **Claude Code** (2.1.267) - Anthropic&apos;s official CLI - **OpenCode** (1.18.30) - Provider-agnostic, open-source (gratis, built-in free models) - **Codex** (0.154.0) - OpenAI&apos;s coding agent - **Pi** (0.85.1) - Earendil coding agent - **Cline** (3.0.61) - VS Code extension (CLI wrapper) - **Command Code CLI** (cmd/cmdc) - Dengan mod jev-nudge untuk memastikan agent tidak berhenti sebelum tugas tuntas ## Free Claude Code (fcc-...</description>
+      <guid>https://localhost/tips-hermes/rangkuman-sesi-free-claude-code-haxcms</guid>
+      <pubDate>Wed, 28 Oct 2026 04:13:20 GMT</pubDate>
+    </item>
+    <item>
       <title>Cara Pakai cmd + jev-nudge</title>
       <link>https://localhost/tips-hermes/cmd-jev-nudge</link>
       <description>Ringkasan Command Code ( cmd / cmdc / command-code ) adalah coding agent CLI. jev-nudge adalah mod stop-hook yang mencegah agent berhenti sebelum tugas tuntas: setiap kali agent mau berhenti, mod bertanya ke model typesafe/jev — &quot;apakah perlu disenggol?&quot; Jika ya, agent dipaksa lanjut. Diuji headless di mesin ini (Command Code 1.88.1): satu prompt menghasilkan 4 senggolan, lalu run berhenti sendiri saat Jev menilai pekerjaan selesai. [cmd-mod-jev-nudge] jev nudge 1: unfinished work found (68%)...</description>
@@ -43,6 +50,13 @@
       <description>Panduan Konfigurasi SSH Tanpa Password via Cloudflare Tunnel Halaman ini merangkum langkah-langkah, penyebab kegagalan umum, serta rekomendasi keamanan untuk mengkonfigurasi akses SSH tanpa password ( public key authentication ) ke server yang menggunakan Cloudflare Tunnel ( home.pesanweb.my.id ) pada port non-standar (Port 2222). 1. Poin Penting Konfigurasi SSH Menyalin Public Key ke Server: Kunci publik client (isi file ~/.ssh/id_ed25519.pub ) harus didaftarkan ke file ~/.ssh/authorized_key...</description>
       <guid>https://localhost/tips-hermes/config-ssh-cloudflare-tunnel</guid>
       <pubDate>Wed, 28 Oct 2026 04:37:58 GMT</pubDate>
+    </item>
+    <item>
+      <title>Rangkuman Sesi: Model, Konfigurasi, Env, Instalasi, Cara Pakai, Langkah &amp; Rekomendasi</title>
+      <link>https://localhost/tips-hermes/rangkuman-model-konfigurasi</link>
+      <description>Ringkasan Sesi Sesi ini membahas model agen, konfigurasi, environment, instalasi, cara pakai, langkah troubleshooting, dan rekomendasi. Model Utama &amp;amp; Fallback Model utama (efektif saat ini): poolside/laguna-s-2.1-free via provider commandcode (sumppod). Diatur di /opt/data/home/.hermes/config.yaml (user-level override). Repo config: hermes-repo/config.yaml menyebut glm-5.3-flash-free via opencode-free , tapi di-timpa oleh user override. Fallback (user override): ling-3.1-flash (commandcod...</description>
+      <guid>https://localhost/tips-hermes/rangkuman-model-konfigurasi</guid>
+      <pubDate>Wed, 28 Oct 2026 05:02:09 GMT</pubDate>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,195 @@
+id: item-5f09a61f-3ead-41aa-95ba-f218bea0e851
+indent: 0
+location: pages/item-5f09a61f-3ead-41aa-95ba-f218bea0e851/index.yaml
+slug: cmd-jev-nudge
+order: 0
+parent: null
+title: Cara Pakai cmd + jev-nudge
+description: ''
+metadata:
+  created: 1793161337
+  updated: 1793161337
+  images: []
+  videos: []
+content: >-
+  <h2>Ringkasan</h2>
+
+  <p><strong>Command Code</strong> (<code>cmd</code> / <code>cmdc</code> /
+  <code>command-code</code>) adalah coding agent CLI. <strong>jev-nudge</strong>
+  adalah <em>mod stop-hook</em> yang mencegah agent berhenti sebelum tugas
+  tuntas: setiap kali agent mau berhenti, mod bertanya ke model
+  <code>typesafe/jev</code> — "apakah perlu disenggol?" Jika ya, agent dipaksa
+  lanjut.</p>
+
+  <p>Diuji headless di mesin ini (Command Code 1.88.1): satu prompt menghasilkan
+  4 senggolan, lalu run berhenti sendiri saat Jev menilai pekerjaan selesai.</p>
+
+  <pre><code>[cmd-mod-jev-nudge] jev nudge 1: unfinished work found (68%),
+  continuing
+
+  [cmd-mod-jev-nudge] jev nudge 2: unfinished work found (68%), continuing
+
+  [cmd-mod-jev-nudge] jev nudge 3: unfinished work found (74%), continuing
+
+  [cmd-mod-jev-nudge] jev nudge 4: unfinished work found (70%), continuing
+
+  stopReason: end_turn   finalText: こんにちは — 5 done. All done.</code></pre>
+
+
+  <h2>Instalasi &amp; autentikasi</h2>
+
+  <pre><code>npm i -g command-code@latest          # prefix npm harus milik user
+  (~/.npm-global)
+
+  npm install -g cmd-mod-jev-nudge      # nama paket TIDAK ber-scope
+
+  cmd mods add -g cmd-mod-jev-nudge     # daftarkan lewat mod manager (wajib)
+
+  cmd mods list                         # harus muncul: cmd-mod-jev-nudge ·
+  user</code></pre>
+
+  <p><strong>Penting:</strong> <code>npm i -g</code> saja tidak mendaftarkan mod
+  (<code>cmd mods list</code> tetap kosong). Paket
+  <code>@commandcodeai/cmd-mod-jev-nudge</code> <strong>404</strong> — nama
+  aslinya <code>cmd-mod-jev-nudge</code>.</p>
+
+  <p>Autentikasi headless tidak memakai <code>cmd login</code> (butuh TTY/Ink
+  raw mode). CLI membaca <strong><code>COMMAND_CODE_API_KEY</code></strong>
+  (bukan <code>CMD_API_KEY</code>, bukan <code>COMMANDCODE_API_KEY</code>):</p>
+
+  <pre><code>export COMMAND_CODE_API_KEY=$(awk -F=
+  '/^COMMAND_CODE_API_KEY=/{print $2}' /opt/data/.env)
+
+  cmd -p "say OK" --max-turns 2        # terautentikasi kalau mencetak
+  OK</code></pre>
+
+
+  <h2>Langkah pakai</h2>
+
+  <ol>
+
+  <li><strong>Auth</strong> — set <code>COMMAND_CODE_API_KEY</code> (atau
+  <code>cmd login</code> di terminal interaktif).</li>
+
+  <li><strong>Pastikan mod aktif</strong> — <code>cmd mods list</code>. Mod
+  auto-load; tidak perlu <code>--mod</code>.</li>
+
+  <li><strong>Jalankan tugas</strong> — <code>cmd -n "nama-sesi" "prompt"</code>
+  atau headless <code>cmd -p "prompt"</code>.</li>
+
+  <li><strong>Tuning</strong> — <code>--mod-option
+  jev-nudge-threshold=0.6</code> dan kawan-kawan (tabel di bawah).</li>
+
+  <li><strong>Kelola sesi</strong> — <code>-c</code>, <code>-r</code>,
+  <code>--fork-session</code>, <code>/sessions</code>, <code>/tree</code>.</li>
+
+  <li><strong>Verifikasi</strong> — <code>--output-format json</code> lalu grep
+  event <code>jev nudge</code>.</li>
+
+  </ol>
+
+
+  <h2>Prompt + sesi: beda yang sering tertukar</h2>
+
+  <ul>
+
+  <li><strong>Session</strong> = percakapan persisten (disimpan, punya id/nama).
+  <strong>Task</strong> = pekerjaan yang ingin tuntas. <strong>Prompt</strong> =
+  pesan Anda; tiap prompt = satu <em>user turn</em>.</li>
+
+  <li><code>cmd "prompt"</code> → TUI interaktif. <code>cmd -p "prompt"</code> →
+  sekali jalan, cetak hasil, keluar.</li>
+
+  <li><code>-c</code> = lanjutkan sesi terakhir; <code>-r "nama"</code> = sesi
+  tertentu; <code>--session &lt;id&gt;</code> = by id; tambah
+  <code>--fork-session</code> = cabang baru tanpa merusak aslinya.</li>
+
+  <li><code>--max-turns N</code> <em>memotong</em> kerja; jev-nudge
+  <em>memperpanjang</em> kerja sampai tuntas. Pakai keduanya.</li>
+
+  <li><code>--safe-mode</code> mematikan semua mod sekali run;
+  <code>--mod-option jev-nudge-max=0</code> mematikan hanya jev.</li>
+
+  </ul>
+
+
+  <h2>Flag jev-nudge</h2>
+
+  <table>
+
+  <thead><tr><th>Flag</th><th>Default</th><th>Arti</th></tr></thead>
+
+  <tbody>
+
+  <tr><td><code>jev-nudge-threshold</code></td><td>0.5</td><td>Probabilitas
+  minimum untuk menyenggol</td></tr>
+
+  <tr><td><code>jev-nudge-max</code></td><td>tanpa batas</td><td>Batas nudge per
+  run; <code>0</code> = mati</td></tr>
+
+  <tr><td><code>jev-nudge-verbose</code></td><td>false</td><td>Tampilkan juga
+  keputusan yang tidak jadi nudge</td></tr>
+
+  <tr><td><code>jev-nudge-base-url</code></td><td>https://api.commandcode.ai</td><td>Root
+  API</td></tr>
+
+  <tr><td><code>jev-nudge-model</code></td><td>typesafe/jev</td><td>Model
+  penilai</td></tr>
+
+  </tbody>
+
+  </table>
+
+  <p>Fakta operasional: maksimum <strong>8 nudge per user turn</strong> (batas
+  Command Code). Jev memberi skor 0.5–0.8 saat masih ada kerja, &lt;0.1 saat
+  selesai. Ia <strong>tidak</strong> menyenggol bila agent sedang menunggu Anda
+  (izin/info/pilihan) atau bila nudge sebelumnya tanpa progres. Tanpa API key,
+  mod dorman (diam), bukan error. <code>DEBUG=true</code> mencatat setiap
+  keputusan ke stderr.</p>
+
+
+  <h2>Resep siap pakai</h2>
+
+  <h3>1. Tugas nyata (headless, aman)</h3>
+
+  <pre><code>cmd -n "fix-tests" \
+      --permission-mode accept-edits \
+      --mod-option jev-nudge-threshold=0.55 \
+      --mod-option jev-nudge-max=5 \
+      -p "perbaiki semua test yang gagal sampai suite hijau" \
+      --max-turns 40 --output-format json | grep -E 'jev nudge|"finalText"'</code></pre>
+  <h3>2. Verifikasi mod benar-benar menyenggol</h3>
+
+  <pre><code>cmd -p "say hi in five languages. ONE hi per reply, then say all
+  done." \
+      --max-turns 10 --output-format json | grep -o 'jev nudge [0-9]*: [^"]*'</code></pre>
+  <h3>3. Sesi panjang / eksperimen</h3>
+
+  <pre><code>cmd -r "refactor-auth" --fork-session \
+      --mod-option jev-nudge-verbose=true "lanjutkan refactor"</code></pre>
+
+  <h2>Rekomendasi</h2>
+
+  <ul>
+
+  <li>Pakai jev untuk tugas multi-langkah yang <strong>jelas selesainya</strong>
+  (refactor, migrasi, rantai perbaikan test).</li>
+
+  <li>Selalu pasang <code>--max-turns</code> sebagai rem (30–50). Tanpa itu,
+  salah tafsir "belum selesai" bisa berputar sampai 8 nudge dan biaya naik.</li>
+
+  <li>Mulai dari threshold default <strong>0.5</strong>; naikkan ke 0.6–0.7
+  kalau terlalu agresif, turunkan ke 0.4 kalau agent berhenti terlalu
+  cepat.</li>
+
+  <li>Headless: pakai <code>--permission-mode accept-edits</code> supaya tidak
+  berhenti di prompt izin (agent "waiting" → jev sengaja diam).</li>
+
+  <li><code>jev-nudge-verbose=true</code> hanya untuk mencoba/mendiagnosis.</li>
+
+  <li>Fork sesi sebelum eksperimen agar riwayat asli tetap utuh.</li>
+
+  <li>Jangan kirim API key ke chat; simpan di <code>.env</code> dan ekspor
+  sebagai <code>COMMAND_CODE_API_KEY</code>.</li>
+
+  </ul>
