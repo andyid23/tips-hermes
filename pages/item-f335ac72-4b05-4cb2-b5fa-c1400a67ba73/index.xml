@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<item>
+<id>item-f335ac72-4b05-4cb2-b5fa-c1400a67ba73</id>
+<indent>0</indent>
+<location>pages/item-f335ac72-4b05-4cb2-b5fa-c1400a67ba73/index.xml</location>
+<slug>cmd-jev-nudge-decision-model</slug>
+<order>0</order>
+<parent>null</parent>
+<title>Menggunakan typesafe/jev sebagai Decision Model di Command Code CLI</title>
+</item>
