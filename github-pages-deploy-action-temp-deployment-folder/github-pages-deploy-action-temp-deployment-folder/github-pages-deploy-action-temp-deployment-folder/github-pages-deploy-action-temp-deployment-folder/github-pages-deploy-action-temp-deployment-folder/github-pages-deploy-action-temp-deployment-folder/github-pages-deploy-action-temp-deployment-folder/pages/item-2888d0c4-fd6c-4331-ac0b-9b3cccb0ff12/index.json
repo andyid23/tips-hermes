@@ -1,0 +1,17 @@
+{
+  "id": "item-2888d0c4-fd6c-4331-ac0b-9b3cccb0ff12",
+  "indent": 0,
+  "location": "pages/item-2888d0c4-fd6c-4331-ac0b-9b3cccb0ff12/index.json",
+  "slug": "haxcms-cek-repo-dulu",
+  "order": 0,
+  "parent": null,
+  "title": "Cek Repo Dulu Sebelum Buat Situs HAXCMS",
+  "description": "",
+  "metadata": {
+    "created": 1793162076,
+    "updated": 1793162076,
+    "images": [],
+    "videos": []
+  },
+  "content": "<h2>Masalah</h2>\n<p>Saat diminta “rangkum ke situs tips-hermes”, situs itu <strong>sudah ada</strong> sebagai repo GitHub (<code>andyid23/tips-hermes</code>) dengan branch <code>master</code> (sumber) dan <code>gh-pages</code> (hasil build). Karena tidak dicek dulu, sempat dibuat situs baru di scratch lewat <code>hax site create</code>. Push-nya gagal dan hasilnya nyaris menjadi dua riwayat yang berbeda.</p>\n\n<h2>Gejala yang muncul</h2>\n<ul>\n<li><code>hax site create</code> berhasil, tetapi repo tujuan sudah berisi situs lain.</li>\n<li>GitHub API menjawab <code>422 Repository creation failed</code> dengan pesan <em>“name already exists on this account”</em>.</li>\n<li><code>git ls-remote</code> menunjukkan branch <code>master</code> dan <code>gh-pages</code> yang sudah lama ada.</li>\n</ul>\n\n<h2>Urutan yang benar</h2>\n<pre><code># 1. Cek dulu apakah situs sudah ada di GitHub\ngit ls-remote --heads https://github.com/&lt;user&gt;/&lt;site&gt;.git\n\n# 2. Kalau ada — clone, jangan create\ngit clone https://github.com/&lt;user&gt;/&lt;site&gt;.git /opt/data/cache/scratch/&lt;site&gt;\ncd /opt/data/cache/scratch/&lt;site&gt;\ngit pull --rebase\n\n# 3. Tambah halaman di clone asli\nhax site node:add --title \"Judul\" --content \"$(cat /opt/data/cache/scratch/halaman.html)\" --slug \"slug\" --y\n\n# 4. Commit + push ke branch sumber\ngit add -A &amp;&amp; git commit -m \"add page: Judul\" &amp;&amp; git push origin HEAD:master\n\n# 5. Buat situs baru HANYA kalau ls-remote kosong dan tidak ada site.json lokal\n</code></pre>\n\n<h2>Kalau terlanjur membuat situs di scratch</h2>\n<ul>\n<li>Buang situs percobaan itu; jangan push.</li>\n<li>Ambil hanya file HTML kontennya, masukkan ke clone repo yang asli.</li>\n<li>Dengan begitu remote tidak pernah mendapat situs duplikat atau riwayat bercabang.</li>\n</ul>\n\n<h2>Catatan tambahan</h2>\n<ul>\n<li>Repo HAXCMS yang sudah pernah terbit biasanya sudah memakai branch <code>gh-pages</code> untuk deploy — periksa workflow sebelum menambal <code>branch: gh-pages</code> lagi.</li>\n<li>Halaman baru digenerate sebagai <code>pages/&lt;item-id&gt;/index.html</code>, bukan <code>pages/&lt;slug&gt;/</code>; ambil path sebenarnya dari <code>site.json</code>.</li>\n<li>URL slug (mis. <code>/cmd-jev-nudge/</code>) memang 404 di <code>curl</code> karena GitHub Pages menyajikan <code>404.html</code> SPA — verifikasi lewat path <code>pages/item-…/index.html</code>, lalu berikan URL slug ke pengguna untuk dibuka di browser.</li>\n</ul>"
+}

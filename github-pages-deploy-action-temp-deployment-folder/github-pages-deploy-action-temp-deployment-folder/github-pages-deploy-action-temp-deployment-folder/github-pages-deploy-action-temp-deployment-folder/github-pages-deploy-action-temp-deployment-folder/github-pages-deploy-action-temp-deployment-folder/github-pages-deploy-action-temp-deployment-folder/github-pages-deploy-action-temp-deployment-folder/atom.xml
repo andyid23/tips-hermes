@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>tips-hermes</title>
-  <link href="https://localhost/_sites/tips-hermes/" rel="self" />
-  <subtitle></subtitle>
+  <link href="https://localhost/tips-hermes/" rel="self" />
+  <subtitle>own course</subtitle>
   <updated>2026-10-28T04:12:24.000Z</updated>
   <author>
       <name></name>
   </author>
-  <id>https://localhost/_sites/tips-hermes/</id>
+  <id>https://localhost/tips-hermes/</id>
   
   <entry>
     <title>Welcome to tips-hermes</title>
@@ -15,42 +15,173 @@
     <updated>2026-10-28T04:12:24.000Z</updated>
     <published>2026-10-28T04:12:24.000Z</published>
     <summary></summary>
-    <link href="https://localhost/_sites/tips-hermes/welcome"/>
+    <link href="https://localhost/tips-hermes/welcome"/>
     
     <content type="html">
-      <![CDATA[ <p>Welcome to your new HAX site! Click edit on the top bar to get started</p>
-<h2>What can I do?</h2>
-<p>We've got a ton of blocks that are easy to use and get a lot done with little effort, so much in fact we made a little video exploring some of them!</p>
-<p>Here's a list of just a few things to get started, or if your a pro, delete this content and have fun!</p>
-<grid-plate layout="1-1" responsive-size="xs" breakpoint-sm="900" breakpoint-md="1200" breakpoint-lg="1500" breakpoint-xl="1800" disable-responsive="">            
-    <ol slot="col-1">
-        <li>Edit this content by hitting "Edit page" above</li>
-        <li>Hit enter in a paragraph of text to add another one</li>
-        <li>Click "Merlin" to see a list of all the things you can do</li>
-        <li>Try to add a video, or edit this one</li>
-        <li>Insert a video</li>
-    </ol>
-    <video-player source="https://www.youtube.com/watch?v=zmext_0e4xQ" slot="col-2"></video-player>
-</grid-plate>
-<h2>This looks fun, let's go!</h2>
-<meme-maker image-url="https://e0.pxfuel.com/wallpapers/813/10/desktop-wallpaper-brain-galaxy-brain.jpg"
-top-text="You, while using HAX"
-bottom-text="...probably"
-></meme-maker>
-<h2>Get involved with HAX</h2>
-<p>
-    <rpg-character></rpg-character>
-    <rpg-character></rpg-character>
-    <rpg-character seed="btopro"></rpg-character>
-    <rpg-character seed="haxtheweb"></rpg-character>
-    <rpg-character></rpg-character>
-    <rpg-character></rpg-character>
-</p>
-<p>We hope you enjoy working with HAX as much as the team has enjoyed building it! If you want to join our community, hit "Merlin" and look for the Discord link among other ways to get involved!</p>
+      <![CDATA[ <h2>Selamat datang di Tips Hermes</h2>
+<p>Situs ini berisi kumpulan tips, trik, dan panduan praktis untuk menggunakan Hermes Agent secara efektif.</p>
+
+<h3>Apa itu Hermes Agent?</h3>
+<p>Hermes Agent adalah asisten AI yang dapat dieksekusi di terminal, dengan akses ke tools untuk browsing, coding, manajemen file, dan banyak lagi. Situs ini berisi tips untuk memaksimalkannya.</p>
+
+<h3>Kategori Tips</h3>
 <ul>
-    <li><a href="https://haxtheweb.org/" target="_blank">Read our HAX Teaching excellence resources</a></li>
-    <li><a href="https://discord.gg/EKYJAjqGhf" target="_blank">Join the HAX community</a></li>
-    <li><a href="https://github.com/elmsln/issues/issues/new?assignees=&labels=POP&template=issue-report.md&title=User%20report%20from%20HAX%20welcome%20page" target="_blank">Post an issue in our issue queue</a></li>
+  <li><strong>Konfigurasi</strong> — setting profile, skills, dan memory</li>
+  <li><strong>Workflow</strong> — delegasi, paralelisasi, dan best practices</li>
+  <li><strong>Infrastruktur</strong> — Drupal, HAXCMS, dan self-hosted services</li>
+  <li><strong>Otomatisasi</strong> — cron job, scheduled tasks, dan scripting</li>
+</ul>
+
+<h3>Mulai dari sini</h3>
+<p>Gunakan navigasi di atas untuk menjelajahi topik tertentu, atau cek halaman-halaman berikut:</p>
+<ul>
+  <li><a href="/quick-start">Quick Start untuk pengguna baru</a></li>
+  <li><a href="/best-practices">Best Practices umum</a></li>
+  <li><a href="/troubleshooting">Troubleshooting masalah umum</a></li>
+</ul>
+
+<p><em>Halaman ini akan terus diperbarui dengan tips baru. Klik tombol edit untuk menambahkan konten Anda sendiri.</em></p><h2>Halaman</h2>
+<ul>
+<li><a href="../cmd-jev-nudge/">Cara Pakai cmd + jev-nudge</a> — mod anti-berhenti-dini: langkah, flag, prompt, rekomendasi.</li>
+</ul> ]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Cara Pakai cmd + jev-nudge</title>
+    <id>item-5f09a61f-3ead-41aa-95ba-f218bea0e851</id>
+    <updated>2026-10-28T04:22:17.000Z</updated>
+    <published>2026-10-28T04:22:17.000Z</published>
+    <summary></summary>
+    <link href="https://localhost/tips-hermes/cmd-jev-nudge"/>
+    
+    <content type="html">
+      <![CDATA[ <h2>Ringkasan</h2>
+<p><strong>Command Code</strong> (<code>cmd</code> / <code>cmdc</code> / <code>command-code</code>) adalah coding agent CLI. <strong>jev-nudge</strong> adalah <em>mod stop-hook</em> yang mencegah agent berhenti sebelum tugas tuntas: setiap kali agent mau berhenti, mod bertanya ke model <code>typesafe/jev</code> — "apakah perlu disenggol?" Jika ya, agent dipaksa lanjut.</p>
+<p>Diuji headless di mesin ini (Command Code 1.88.1): satu prompt menghasilkan 4 senggolan, lalu run berhenti sendiri saat Jev menilai pekerjaan selesai.</p>
+<pre><code>[cmd-mod-jev-nudge] jev nudge 1: unfinished work found (68%), continuing
+[cmd-mod-jev-nudge] jev nudge 2: unfinished work found (68%), continuing
+[cmd-mod-jev-nudge] jev nudge 3: unfinished work found (74%), continuing
+[cmd-mod-jev-nudge] jev nudge 4: unfinished work found (70%), continuing
+stopReason: end_turn   finalText: こんにちは — 5 done. All done.</code></pre>
+
+<h2>Instalasi &amp; autentikasi</h2>
+<pre><code>npm i -g command-code@latest          # prefix npm harus milik user (~/.npm-global)
+npm install -g cmd-mod-jev-nudge      # nama paket TIDAK ber-scope
+cmd mods add -g cmd-mod-jev-nudge     # daftarkan lewat mod manager (wajib)
+cmd mods list                         # harus muncul: cmd-mod-jev-nudge · user</code></pre>
+<p><strong>Penting:</strong> <code>npm i -g</code> saja tidak mendaftarkan mod (<code>cmd mods list</code> tetap kosong). Paket <code>@commandcodeai/cmd-mod-jev-nudge</code> <strong>404</strong> — nama aslinya <code>cmd-mod-jev-nudge</code>.</p>
+<p>Autentikasi headless tidak memakai <code>cmd login</code> (butuh TTY/Ink raw mode). CLI membaca <strong><code>COMMAND_CODE_API_KEY</code></strong> (bukan <code>CMD_API_KEY</code>, bukan <code>COMMANDCODE_API_KEY</code>):</p>
+<pre><code>export COMMAND_CODE_API_KEY=$(awk -F= '/^COMMAND_CODE_API_KEY=/{print $2}' /opt/data/.env)
+cmd -p "say OK" --max-turns 2        # terautentikasi kalau mencetak OK</code></pre>
+
+<h2>Langkah pakai</h2>
+<ol>
+<li><strong>Auth</strong> — set <code>COMMAND_CODE_API_KEY</code> (atau <code>cmd login</code> di terminal interaktif).</li>
+<li><strong>Pastikan mod aktif</strong> — <code>cmd mods list</code>. Mod auto-load; tidak perlu <code>--mod</code>.</li>
+<li><strong>Jalankan tugas</strong> — <code>cmd -n "nama-sesi" "prompt"</code> atau headless <code>cmd -p "prompt"</code>.</li>
+<li><strong>Tuning</strong> — <code>--mod-option jev-nudge-threshold=0.6</code> dan kawan-kawan (tabel di bawah).</li>
+<li><strong>Kelola sesi</strong> — <code>-c</code>, <code>-r</code>, <code>--fork-session</code>, <code>/sessions</code>, <code>/tree</code>.</li>
+<li><strong>Verifikasi</strong> — <code>--output-format json</code> lalu grep event <code>jev nudge</code>.</li>
+</ol>
+
+<h2>Prompt + sesi: beda yang sering tertukar</h2>
+<ul>
+<li><strong>Session</strong> = percakapan persisten (disimpan, punya id/nama). <strong>Task</strong> = pekerjaan yang ingin tuntas. <strong>Prompt</strong> = pesan Anda; tiap prompt = satu <em>user turn</em>.</li>
+<li><code>cmd "prompt"</code> → TUI interaktif. <code>cmd -p "prompt"</code> → sekali jalan, cetak hasil, keluar.</li>
+<li><code>-c</code> = lanjutkan sesi terakhir; <code>-r "nama"</code> = sesi tertentu; <code>--session &lt;id&gt;</code> = by id; tambah <code>--fork-session</code> = cabang baru tanpa merusak aslinya.</li>
+<li><code>--max-turns N</code> <em>memotong</em> kerja; jev-nudge <em>memperpanjang</em> kerja sampai tuntas. Pakai keduanya.</li>
+<li><code>--safe-mode</code> mematikan semua mod sekali run; <code>--mod-option jev-nudge-max=0</code> mematikan hanya jev.</li>
+</ul>
+
+<h2>Flag jev-nudge</h2>
+<table>
+<thead><tr><th>Flag</th><th>Default</th><th>Arti</th></tr></thead>
+<tbody>
+<tr><td><code>jev-nudge-threshold</code></td><td>0.5</td><td>Probabilitas minimum untuk menyenggol</td></tr>
+<tr><td><code>jev-nudge-max</code></td><td>tanpa batas</td><td>Batas nudge per run; <code>0</code> = mati</td></tr>
+<tr><td><code>jev-nudge-verbose</code></td><td>false</td><td>Tampilkan juga keputusan yang tidak jadi nudge</td></tr>
+<tr><td><code>jev-nudge-base-url</code></td><td>https://api.commandcode.ai</td><td>Root API</td></tr>
+<tr><td><code>jev-nudge-model</code></td><td>typesafe/jev</td><td>Model penilai</td></tr>
+</tbody>
+</table>
+<p>Fakta operasional: maksimum <strong>8 nudge per user turn</strong> (batas Command Code). Jev memberi skor 0.5–0.8 saat masih ada kerja, &lt;0.1 saat selesai. Ia <strong>tidak</strong> menyenggol bila agent sedang menunggu Anda (izin/info/pilihan) atau bila nudge sebelumnya tanpa progres. Tanpa API key, mod dorman (diam), bukan error. <code>DEBUG=true</code> mencatat setiap keputusan ke stderr.</p>
+
+<h2>Resep siap pakai</h2>
+<h3>1. Tugas nyata (headless, aman)</h3>
+<pre><code>cmd -n "fix-tests" \
+    --permission-mode accept-edits \
+    --mod-option jev-nudge-threshold=0.55 \
+    --mod-option jev-nudge-max=5 \
+    -p "perbaiki semua test yang gagal sampai suite hijau" \
+    --max-turns 40 --output-format json | grep -E 'jev nudge|"finalText"'</code></pre>
+<h3>2. Verifikasi mod benar-benar menyenggol</h3>
+<pre><code>cmd -p "say hi in five languages. ONE hi per reply, then say all done." \
+    --max-turns 10 --output-format json | grep -o 'jev nudge [0-9]*: [^"]*'</code></pre>
+<h3>3. Sesi panjang / eksperimen</h3>
+<pre><code>cmd -r "refactor-auth" --fork-session \
+    --mod-option jev-nudge-verbose=true "lanjutkan refactor"</code></pre>
+
+<h2>Rekomendasi</h2>
+<ul>
+<li>Pakai jev untuk tugas multi-langkah yang <strong>jelas selesainya</strong> (refactor, migrasi, rantai perbaikan test).</li>
+<li>Selalu pasang <code>--max-turns</code> sebagai rem (30–50). Tanpa itu, salah tafsir "belum selesai" bisa berputar sampai 8 nudge dan biaya naik.</li>
+<li>Mulai dari threshold default <strong>0.5</strong>; naikkan ke 0.6–0.7 kalau terlalu agresif, turunkan ke 0.4 kalau agent berhenti terlalu cepat.</li>
+<li>Headless: pakai <code>--permission-mode accept-edits</code> supaya tidak berhenti di prompt izin (agent "waiting" → jev sengaja diam).</li>
+<li><code>jev-nudge-verbose=true</code> hanya untuk mencoba/mendiagnosis.</li>
+<li>Fork sesi sebelum eksperimen agar riwayat asli tetap utuh.</li>
+<li>Jangan kirim API key ke chat; simpan di <code>.env</code> dan ekspor sebagai <code>COMMAND_CODE_API_KEY</code>.</li>
+</ul> ]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Cek Repo Dulu Sebelum Buat Situs HAXCMS</title>
+    <id>item-2888d0c4-fd6c-4331-ac0b-9b3cccb0ff12</id>
+    <updated>2026-10-28T04:34:36.000Z</updated>
+    <published>2026-10-28T04:34:36.000Z</published>
+    <summary></summary>
+    <link href="https://localhost/tips-hermes/haxcms-cek-repo-dulu"/>
+    
+    <content type="html">
+      <![CDATA[ <h2>Masalah</h2>
+<p>Saat diminta “rangkum ke situs tips-hermes”, situs itu <strong>sudah ada</strong> sebagai repo GitHub (<code>andyid23/tips-hermes</code>) dengan branch <code>master</code> (sumber) dan <code>gh-pages</code> (hasil build). Karena tidak dicek dulu, sempat dibuat situs baru di scratch lewat <code>hax site create</code>. Push-nya gagal dan hasilnya nyaris menjadi dua riwayat yang berbeda.</p>
+
+<h2>Gejala yang muncul</h2>
+<ul>
+<li><code>hax site create</code> berhasil, tetapi repo tujuan sudah berisi situs lain.</li>
+<li>GitHub API menjawab <code>422 Repository creation failed</code> dengan pesan <em>“name already exists on this account”</em>.</li>
+<li><code>git ls-remote</code> menunjukkan branch <code>master</code> dan <code>gh-pages</code> yang sudah lama ada.</li>
+</ul>
+
+<h2>Urutan yang benar</h2>
+<pre><code># 1. Cek dulu apakah situs sudah ada di GitHub
+git ls-remote --heads https://github.com/&lt;user&gt;/&lt;site&gt;.git
+
+# 2. Kalau ada — clone, jangan create
+git clone https://github.com/&lt;user&gt;/&lt;site&gt;.git /opt/data/cache/scratch/&lt;site&gt;
+cd /opt/data/cache/scratch/&lt;site&gt;
+git pull --rebase
+
+# 3. Tambah halaman di clone asli
+hax site node:add --title "Judul" --content "$(cat /opt/data/cache/scratch/halaman.html)" --slug "slug" --y
+
+# 4. Commit + push ke branch sumber
+git add -A &amp;&amp; git commit -m "add page: Judul" &amp;&amp; git push origin HEAD:master
+
+# 5. Buat situs baru HANYA kalau ls-remote kosong dan tidak ada site.json lokal
+</code></pre>
+
+<h2>Kalau terlanjur membuat situs di scratch</h2>
+<ul>
+<li>Buang situs percobaan itu; jangan push.</li>
+<li>Ambil hanya file HTML kontennya, masukkan ke clone repo yang asli.</li>
+<li>Dengan begitu remote tidak pernah mendapat situs duplikat atau riwayat bercabang.</li>
+</ul>
+
+<h2>Catatan tambahan</h2>
+<ul>
+<li>Repo HAXCMS yang sudah pernah terbit biasanya sudah memakai branch <code>gh-pages</code> untuk deploy — periksa workflow sebelum menambal <code>branch: gh-pages</code> lagi.</li>
+<li>Halaman baru digenerate sebagai <code>pages/&lt;item-id&gt;/index.html</code>, bukan <code>pages/&lt;slug&gt;/</code>; ambil path sebenarnya dari <code>site.json</code>.</li>
+<li>URL slug (mis. <code>/cmd-jev-nudge/</code>) memang 404 di <code>curl</code> karena GitHub Pages menyajikan <code>404.html</code> SPA — verifikasi lewat path <code>pages/item-…/index.html</code>, lalu berikan URL slug ke pengguna untuk dibuka di browser.</li>
 </ul> ]]>
     </content>
   </entry>

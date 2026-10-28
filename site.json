@@ -166,6 +166,23 @@
         "created": 1793160800,
         "updated": 1793160800
       }
+    },
+    {
+      "id": "item-f335ac72-4b05-4cb2-b5fa-c1400a67ba73",
+      "indent": 0,
+      "location": "pages/item-f335ac72-4b05-4cb2-b5fa-c1400a67ba73/index.html",
+      "slug": "cmd-jev-nudge-decision-model",
+      "order": 6,
+      "parent": null,
+      "title": "Menggunakan typesafe/jev sebagai Decision Model di Command Code CLI",
+      "description": "Panduan penggunaan typesafe/jev sebagai decision model: format JSON, tipe noul/choice/score, langkah auth, sesi, tuning jev-nudge, dan rekomendasi",
+      "metadata": {
+        "created": 1793164000,
+        "updated": 1793164000,
+        "internal_name": "cmd-jev-nudge-decision-model",
+        "images": [],
+        "videos": []
+      }
     }
   ]
 }
