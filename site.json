@@ -104,6 +104,22 @@
         "images": [],
         "videos": []
       }
+    },
+    {
+      "id": "item-0f546a47-a4e2-416b-9747-6be73c0d63f2",
+      "indent": 0,
+      "location": "pages/item-0f546a47-a4e2-416b-9747-6be73c0d63f2/index.html",
+      "slug": "fcc-claude-praw-opencode",
+      "order": 0,
+      "parent": null,
+      "title": "Cara Pakai fcc-claude, Plugin PRAW HAX, OpenCode & Langkah Instalasi",
+      "description": "",
+      "metadata": {
+        "created": 1793162213,
+        "updated": 1793162213,
+        "images": [],
+        "videos": []
+      }
     }
   ]
 }
