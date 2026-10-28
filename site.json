@@ -88,6 +88,22 @@
         "images": [],
         "videos": []
       }
+    },
+    {
+      "id": "item-2888d0c4-fd6c-4331-ac0b-9b3cccb0ff12",
+      "indent": 0,
+      "location": "pages/item-2888d0c4-fd6c-4331-ac0b-9b3cccb0ff12/index.html",
+      "slug": "haxcms-cek-repo-dulu",
+      "order": 0,
+      "parent": null,
+      "title": "Cek Repo Dulu Sebelum Buat Situs HAXCMS",
+      "description": "",
+      "metadata": {
+        "created": 1793162076,
+        "updated": 1793162076,
+        "images": [],
+        "videos": []
+      }
     }
   ]
 }
