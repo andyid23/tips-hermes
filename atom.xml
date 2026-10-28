@@ -30,6 +30,7 @@
   <li><strong>Workflow</strong> — delegasi, paralelisasi, dan best practices</li>
   <li><strong>Infrastruktur</strong> — Drupal, HAXCMS, dan self-hosted services</li>
   <li><strong>Otomatisasi</strong> — cron job, scheduled tasks, dan scripting</li>
+<li><a href="../haxcms-cek-repo-dulu/">Cek Repo Dulu Sebelum Buat Situs HAXCMS</a> — hindari situs duplikat &amp; riwayat bercabang.</li>
 </ul>
 
 <h3>Mulai dari sini</h3>
@@ -183,6 +184,18 @@ git add -A &amp;&amp; git commit -m "add page: Judul" &amp;&amp; git push origin
 <li>Halaman baru digenerate sebagai <code>pages/&lt;item-id&gt;/index.html</code>, bukan <code>pages/&lt;slug&gt;/</code>; ambil path sebenarnya dari <code>site.json</code>.</li>
 <li>URL slug (mis. <code>/cmd-jev-nudge/</code>) memang 404 di <code>curl</code> karena GitHub Pages menyajikan <code>404.html</code> SPA — verifikasi lewat path <code>pages/item-…/index.html</code>, lalu berikan URL slug ke pengguna untuk dibuka di browser.</li>
 </ul> ]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Cara Pakai fcc-claude, Plugin PRAW HAX, OpenCode &amp; Langkah Instalasi</title>
+    <id>item-0f546a47-a4e2-416b-9747-6be73c0d63f2</id>
+    <updated>2026-10-28T04:36:53.000Z</updated>
+    <published>2026-10-28T04:36:53.000Z</published>
+    <summary></summary>
+    <link href="https://localhost/tips-hermes/fcc-claude-praw-opencode"/>
+    
+    <content type="html">
+      <![CDATA[ &nbsp;# Rangkuman Sesi: Cara Pakai fcc-claude, Plugin PRAW HAX, OpenCode &amp; Langkah Instalasi\n&nbsp;\n&nbsp;Tanggal: 2025-10-28\n&nbsp;\n&nbsp;## Point Penting\n&nbsp;\n&nbsp;### 1) Free Claude Code Ecosystem\n&nbsp;- **Agents**: Claude Code, Codex, OpenCode (gratis), Pi, Cline\n&nbsp;- **Proxy**: `fcc-server` jalan di `http://127.0.0.1:8082`, admin UI di `http://127.0.0.1:8082/admin`\n&nbsp;- **Endpoint**: `/claude`, `/codex`, `/opencode`, `/pi`, `/cline` (format OpenAI-compatible `/v1/chat/completions`)\n&nbsp;- **OpenCode**: paling praktis (gratis, tanpa API key)\n&nbsp;- **Config**: `~/.fcc/.env`, auth di `~/.fcc/auth/`, log di `~/.fcc/logs/`\n&nbsp;\n&nbsp;### 2) Plugin HAX via PRAW (haxtheweb/praw)\n&nbsp;Repo: https://github.com/haxtheweb/praw\n&nbsp;\n&nbsp;Marketplace &amp; plugin:\n&nbsp;```bash\n&nbsp;/plugin marketplace add haxtheweb/praw\n&nbsp;/plugin install hax-onboarding@haxtheweb\n&nbsp;```\n&nbsp;\n&nbsp;Catatan:\n&nbsp;- Slash command `/plugin` adalah fitur **Claude Code CLI interaktif**. Tidak bisa dipanggil lewat `fcc-server` HTTP proxy.\n&nbsp;- Ada script onboarding: `curl -fsSL https://raw.githubusercontent.com/haxtheweb/praw/main/hax-onboarding.sh | bash`\n&nbsp;- Plugin `hax-onboarding` auto-install HAX CLI, bawa skill pengetahuan, dan sediakan slash command (quickstart, site, webcomponent, audit, serve, publish).\n&nbsp;\n&nbsp;### 3) OpenCode (via fcc-server / standalone)\n&nbsp;- **Standalone**: `opencode run "task"` atau `opencode` interaktif\n&nbsp;- **Via proxy**:\n&nbsp;```bash\n&nbsp;curl -X POST http://localhost:8082/opencode/v1/chat/completions \\n&nbsp;  -H "Content-Type: application/json" \\n&nbsp;  -d '{"model": "opencode/free", "messages": [{"role": "user", "content": "Halo"}]}'\n&nbsp;```\n&nbsp;- Cocok untuk HAX/webcomponent tanpa perlu API key.\n&nbsp;\n&nbsp;## Langkah Praktis (Rekomendasi)\n&nbsp;\n&nbsp;### Opsi A: Install plugin langsung di Claude Code (paling benar untuk /plugin)\n&nbsp;```bash\n&nbsp;# Cek claude\n&nbsp;claude --version  # v2.1.267 terinstall\n&nbsp;\n&nbsp;# Jalankan Claude Code interaktif\n&nbsp;claude\n&nbsp;\n&nbsp;# Di dalam Claude Code:\n&nbsp;/plugin marketplace add haxtheweb/praw\n&nbsp;/plugin install hax-onboarding@haxtheweb\n&nbsp;# atau dari folder lokal:\n&nbsp;/plugin install hax-onboarding@folder:/opt/data/home/Documents/git/haxtheweb/\n&nbsp;```\n&nbsp;\n&nbsp;### Opsi B: Start fcc-server untuk routing multi-agent\n&nbsp;```bash\n&nbsp;# Jalankan background\n&nbsp;nohup fcc-server &gt; ~/.fcc/server.log 2&gt;&amp;1 &amp;\n&nbsp;# Cek\n&nbsp;curl http://127.0.0.1:8082/health\n&nbsp;# Admin UI: http://127.0.0.1:8082/admin\n&nbsp;```\n&nbsp;\n&nbsp;### Opsi C: Onboarding HAX cepat (script)\n&nbsp;```bash\n&nbsp;curl -fsSL https://raw.githubusercontent.com/haxtheweb/praw/main/hax-onboarding.sh | bash\n&nbsp;```\n&nbsp;\n&nbsp;## Rekomendasi\n&nbsp;1. **Untuk plugin marketplace/install** → pakai **Claude Code CLI langsung** (interaktif). Jangan lewat fcc-server.\n&nbsp;2. **Untuk orkestrasi paralel / routing ke banyak agent** → pakai **fcc-server**.\n&nbsp;3. **Untuk coba-coba tanpa biaya** → pakai **OpenCode** (standalone atau via proxy).\n&nbsp;4. **Untuk onboarding HAX end-to-end** → jalankan **hax-onboarding.sh** atau plugin `hax-onboarding` di Claude Code.\n&nbsp;\n&nbsp;## Troubleshooting Singkat\n&nbsp;- `tmux/screen` tidak wajib, cukup `claude` langsung di terminal\n&nbsp;- Kalau plugin install dari folder: pastikan path benar\n&nbsp;- Admin UI fcc hanya localhost (butuh SSH tunnel kalau remote)\n ]]>
     </content>
   </entry>
 </feed>
