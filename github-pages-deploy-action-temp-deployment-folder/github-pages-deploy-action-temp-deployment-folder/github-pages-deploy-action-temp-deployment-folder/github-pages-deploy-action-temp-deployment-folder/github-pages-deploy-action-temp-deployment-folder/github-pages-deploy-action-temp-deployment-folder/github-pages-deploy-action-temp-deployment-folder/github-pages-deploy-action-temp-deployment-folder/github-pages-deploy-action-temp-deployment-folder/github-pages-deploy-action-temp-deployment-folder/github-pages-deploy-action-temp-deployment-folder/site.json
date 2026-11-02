@@ -1,0 +1,78 @@
+{
+  "id": "abead159-2490-467c-9e5a-2bbdb3ec5dd1",
+  "title": "tips-hermes",
+  "author": "",
+  "description": "own course",
+  "license": "by-sa",
+  "metadata": {
+    "author": {},
+    "site": {
+      "name": "tips-hermes",
+      "logo": "assets/banner.jpg",
+      "settings": {
+        "lang": "en-US",
+        "publishPagesOn": true,
+        "canonical": true,
+        "pathauto": true
+      },
+      "created": 1793160744,
+      "updated": 1793160744,
+      "git": {
+        "vendor": "github",
+        "branch": "gh-pages"
+      }
+    },
+    "theme": {
+      "element": "clean-one",
+      "path": "@haxtheweb/clean-one/clean-one.js",
+      "name": "Clean One",
+      "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
+      "description": "Start with a blank site using the Clean One",
+      "category": [
+        "Course"
+      ],
+      "hidden": false,
+      "priority": -2,
+      "terrible": false,
+      "supportedPalettes": [
+        "4",
+        "5"
+      ],
+      "variables": {
+        "icon": "icons:record-voice-over",
+        "hexCode": "#3f51b5",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7"
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "platform": {
+      "audience": "expert",
+      "features": {},
+      "allowedBlocks": []
+    },
+    "build": {
+      "version": "26.8.0",
+      "structure": "course",
+      "type": "own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-e9ae95a3-adb0-4053-ac7a-1522f320f55a",
+      "indent": 0,
+      "location": "pages/item-e9ae95a3-adb0-4053-ac7a-1522f320f55a/index.html",
+      "slug": "welcome",
+      "order": 0,
+      "parent": null,
+      "title": "Welcome to tips-hermes",
+      "description": "",
+      "metadata": {
+        "created": 1793160744,
+        "updated": 1793160744
+      }
+    }
+  ],
+  "location": "/_sites/tips-hermes/index.html"
+}

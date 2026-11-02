@@ -1,0 +1,20 @@
+# tips-hermes
+
+HAXcms is a file-based CMS: authored pages and metadata are stored as portable files, not locked into a database-only workflow.
+The canonical site structure is `site.json`, represented in JSON Outline Schema (`id`, `parent`, `order`, `slug`, `location`, and `metadata`).
+Use HAX CLI and ecosystem tooling to maintain human-authored content while keeping machine-readable outputs synchronized.
+Managed files (feeds, search indexes, manifests, and this `llms.txt`) are generated artifacts and should be rebuilt by tooling.
+
+## Core resources
+- [site.json](https://localhost/_sites/tips-hermes/site.json): Canonical site manifest and navigation tree in JSON Outline Schema format.
+- [llms.txt](https://localhost/_sites/tips-hermes/llms.txt): LLM-oriented guide to this site and its machine-readable resources.
+
+## Pages
+- [Welcome to tips-hermes](https://localhost/_sites/tips-hermes/pages/item-e9ae95a3-adb0-4053-ac7a-1522f320f55a/index.md)
+
+## Optional
+- [Search index](https://localhost/_sites/tips-hermes/lunrSearchIndex.json): Lunr corpus for quick full-text retrieval.
+- [RSS feed](https://localhost/_sites/tips-hermes/rss.xml): Site updates in RSS format.
+- [Atom feed](https://localhost/_sites/tips-hermes/atom.xml): Site updates in Atom format.
+- [Sitemap](https://localhost/_sites/tips-hermes/sitemap.xml): URL-level discovery map for the published site.
+- [Agent skills](https://localhost/_sites/tips-hermes/.well-known/agent-skills/index.json): Agent Skills discovery index (agentskills.io v0.2.0) listing skills that teach an agent how to read, author, audit, and remix this site.

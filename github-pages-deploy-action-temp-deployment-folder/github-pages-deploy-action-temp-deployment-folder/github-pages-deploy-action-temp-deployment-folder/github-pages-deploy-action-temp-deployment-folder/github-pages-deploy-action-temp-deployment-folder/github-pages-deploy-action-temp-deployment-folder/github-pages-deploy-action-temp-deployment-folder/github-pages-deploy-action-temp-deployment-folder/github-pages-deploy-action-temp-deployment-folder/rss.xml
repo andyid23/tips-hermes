@@ -2,19 +2,33 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>tips-hermes</title>
-    <link>https://localhost/_sites/tips-hermes/</link>
-    <description></description>
-    <copyright>Copyright (C) 2026 https://localhost/_sites/tips-hermes</copyright>
+    <link>https://localhost/tips-hermes/</link>
+    <description>own course</description>
+    <copyright>Copyright (C) 2026 https://localhost/tips-hermes</copyright>
     <language>en-us</language>
     <lastBuildDate>Wed, 28 Oct 2026 04:12:24 GMT</lastBuildDate>
     <generator>HAXcms NodeJS</generator>
-    <atom:link href="https://localhost/_sites/tips-hermes/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://localhost/tips-hermes/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Welcome to tips-hermes</title>
-      <link>https://localhost/_sites/tips-hermes/welcome</link>
-      <description>Welcome to your new HAX site! Click edit on the top bar to get started What can I do? We&apos;ve got a ton of blocks that are easy to use and get a lot done with little effort, so much in fact we made a little video exploring some of them! Here&apos;s a list of just a few things to get started, or if your a pro, delete this content and have fun! Edit this content by hitting &quot;Edit page&quot; above Hit enter in a paragraph of text to add another one Click &quot;Merlin&quot; to see a list of all the things you can do Tr...</description>
-      <guid>https://localhost/_sites/tips-hermes/welcome</guid>
+      <link>https://localhost/tips-hermes/welcome</link>
+      <description>Selamat datang di Tips Hermes Situs ini berisi kumpulan tips, trik, dan panduan praktis untuk menggunakan Hermes Agent secara efektif. Apa itu Hermes Agent? Hermes Agent adalah asisten AI yang dapat dieksekusi di terminal, dengan akses ke tools untuk browsing, coding, manajemen file, dan banyak lagi. Situs ini berisi tips untuk memaksimalkannya. Kategori Tips Konfigurasi — setting profile, skills, dan memory Workflow — delegasi, paralelisasi, dan best practices Infrastruktur — Drupal, HAXCMS,...</description>
+      <guid>https://localhost/tips-hermes/welcome</guid>
       <pubDate>Wed, 28 Oct 2026 04:12:24 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cara Pakai cmd + jev-nudge</title>
+      <link>https://localhost/tips-hermes/cmd-jev-nudge</link>
+      <description>Ringkasan Command Code ( cmd / cmdc / command-code ) adalah coding agent CLI. jev-nudge adalah mod stop-hook yang mencegah agent berhenti sebelum tugas tuntas: setiap kali agent mau berhenti, mod bertanya ke model typesafe/jev — &quot;apakah perlu disenggol?&quot; Jika ya, agent dipaksa lanjut. Diuji headless di mesin ini (Command Code 1.88.1): satu prompt menghasilkan 4 senggolan, lalu run berhenti sendiri saat Jev menilai pekerjaan selesai. [cmd-mod-jev-nudge] jev nudge 1: unfinished work found (68%)...</description>
+      <guid>https://localhost/tips-hermes/cmd-jev-nudge</guid>
+      <pubDate>Wed, 28 Oct 2026 04:22:17 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cek Repo Dulu Sebelum Buat Situs HAXCMS</title>
+      <link>https://localhost/tips-hermes/haxcms-cek-repo-dulu</link>
+      <description>Masalah Saat diminta “rangkum ke situs tips-hermes”, situs itu sudah ada sebagai repo GitHub ( andyid23/tips-hermes ) dengan branch master (sumber) dan gh-pages (hasil build). Karena tidak dicek dulu, sempat dibuat situs baru di scratch lewat hax site create . Push-nya gagal dan hasilnya nyaris menjadi dua riwayat yang berbeda. Gejala yang muncul hax site create berhasil, tetapi repo tujuan sudah berisi situs lain. GitHub API menjawab 422 Repository creation failed dengan pesan “name already ...</description>
+      <guid>https://localhost/tips-hermes/haxcms-cek-repo-dulu</guid>
+      <pubDate>Wed, 28 Oct 2026 04:34:36 GMT</pubDate>
     </item>
   </channel>
 </rss>

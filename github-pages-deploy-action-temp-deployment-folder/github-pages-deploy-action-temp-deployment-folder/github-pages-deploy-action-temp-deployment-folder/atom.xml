@@ -48,6 +48,122 @@
     </content>
   </entry>
   <entry>
+    <title>Rangkuman Sesi - Free Claude Code &amp; HAXCMS</title>
+    <id>item-rangkuman-sesi-free-claude-code</id>
+    <updated>2026-10-28T04:13:20.000Z</updated>
+    <published>2026-10-28T04:13:20.000Z</published>
+    <summary>Ringkasan agent, fcc-server, HAXCMS, Command Code + jev-nudge</summary>
+    <link href="https://localhost/tips-hermes/rangkuman-sesi-free-claude-code-haxcms"/>
+    
+    <content type="html">
+      <![CDATA[ # Rangkuman Sesi - Free Claude Code & HAXCMS
+
+## Agent yang Digunakan
+- **Claude Code** (2.1.267) - Anthropic's official CLI
+- **OpenCode** (1.18.30) - Provider-agnostic, open-source (gratis, built-in free models)
+- **Codex** (0.154.0) - OpenAI's coding agent
+- **Pi** (0.85.1) - Earendil coding agent
+- **Cline** (3.0.61) - VS Code extension (CLI wrapper)
+- **Command Code CLI** (cmd/cmdc) - Dengan mod jev-nudge untuk memastikan agent tidak berhenti sebelum tugas tuntas
+
+## Free Claude Code (fcc-server) - Proxy Unifying
+
+### Instalasi
+```bash
+curl -fsSL https://raw.githubusercontent.com/Alishahryar1/free-claude-code/main/scripts/install.sh | bash
+```
+
+### Konfigurasi PATH
+```bash
+export PATH="$HOME/.local/bin:$HOME/.opencode/bin:$HOME/.npm-global/bin:$HOME/.local/share/uv/tools/free-claude-code/bin:$PATH"
+```
+
+### Menjalankan Proxy
+```bash
+fcc-server &  # background
+# atau
+nohup fcc-server > ~/.fcc/server.log 2>&1 &
+```
+
+- **Port:** http://127.0.0.1:8082
+- **Admin UI:** http://127.0.0.1:8082/admin
+- **Endpoints:** /claude, /codex, /opencode, /pi, /cline (OpenAI-compatible)
+
+### API Keys
+- Bisa via Admin UI di http://127.0.0.1:8082/admin atau via `~/.fcc/.env`
+- **OpenCode** tidak butuh API key (gratis)
+- Keys tersimpan: OPENROUTER_API_KEY, NVIDIA_NIM_API_KEY, OLLAMA_API_KEY, dll
+
+## HAXCMS - Membuat Situs
+
+### Instalasi HAX CLI
+```bash
+npm i -g @haxtheweb/create
+npm link  # atau langsung via global
+```
+
+### Membuat Situs Baru
+```bash
+cd /path/where/you/want/sites
+hax site nama-situs --y --no-i
+```
+
+Contoh: `hax site ustadzhikmah --y --no-i`
+
+### Konfigurasi Git (wajib)
+```bash
+git config --global user.email "nama@email.com"
+git config --global user.name "Nama Anda"
+```
+
+### Menjalankan & Mengelola Situs
+```bash
+cd nama-situs
+hax start  # Interactive menu
+# atau
+hax site site:status  # cek status
+```
+
+## Command Code + jev-nudge (Mod Stop-Hook)
+
+### Instalasi
+```bash
+npm i -g command-code@latest
+npm install -g cmd-mod-jev-nudge
+cmd mods add -g cmd-mod-jev-nudge
+```
+
+### Autentikasi (Headless)
+```bash
+export COMMAND_CODE_API_KEY=$(grep COMMAND_CODE_API_KEY /opt/data/.env | cut -d= -f2)
+```
+
+### Penggunaan
+```bash
+cmd -n "nama-sesi" --permission-mode accept-edits "prompt tugas"
+cmd -p "prompt" --max-turns 40 --output-format json  # headless
+```
+
+**Kunci:** jev-nudge mencegah agent berhenti sebelum pekerjaan benar-benar selesai. Set `--max-turns` sebagai rem untuk mengontrol biaya.
+
+## Langkah Praktis (Rekomendasi)
+
+1. **Setup fcc-server** - Jalankan proxy untuk mengakses semua agent via satu endpoint
+2. **Gunakan OpenCode** - Untuk tugas gratis tanpa API key
+3. **Buat situs HAXCMS** - `hax site <nama> --y --no-i` dengan git config sudah diset
+4. **Untuk tugas kompleks** - Gunakan Command Code + jev-nudge dengan `--max-turns` terbatas
+5. **Kelola via Admin UI** - http://127.0.0.1:8082/admin untuk monitoring & config keys
+
+## Tips Penting
+- **PATH order matters** untuk fcc-server
+- **Admin UI local-only** (127.0.0.1) - pakai SSH tunnel untuk remote
+- **jev-nudge** maksimal 8 nudge per user turn
+- **HAXCMS** butuh git user identity untuk auto-commit
+- **Node/npm** harus terinstall untuk HAX CLI
+ ]]>
+    </content>
+  </entry>
+  <entry>
     <title>Cara Pakai cmd + jev-nudge</title>
     <id>item-5f09a61f-3ead-41aa-95ba-f218bea0e851</id>
     <updated>2026-10-28T04:22:17.000Z</updated>
@@ -286,6 +402,69 @@ chmod 600 ~/.ssh/authorized_keys
   <li><strong>Non-aktifkan Password Authentication:</strong> Ubah konfigurasi <code>/etc/ssh/sshd_config</code> di server menjadi <code>PasswordAuthentication no</code> dan <code>PubkeyAuthentication yes</code>, lalu restart SSHD (<code>systemctl restart sshd</code>). Ini mencegah serangan brute-force password.</li>
   <li><strong>Gunakan Cloudflare Tunnel Persistent Service:</strong> Pastikan <code>cloudflared</code> terpasang sebagai systemd service (<code>cloudflared service install &lt;token&gt;</code>) agar tunnel tetap aktif otomatis setelah server direboot.</li>
   <li><strong>Tidak Perlu Service Client Background:</strong> Client tidak perlu menjalankan daemon background seperti <code>cloudflared access tcp ... &amp;</code>, cukup gunakan <code>ProxyCommand</code> di SSH config agar koneksi dipanggil secara <em>on-demand</em> saat melakukan SSH.</li>
+</ul> ]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Rangkuman Sesi: Model, Konfigurasi, Env, Instalasi, Cara Pakai, Langkah &amp; Rekomendasi</title>
+    <id>item-5cc3374b-46d7-4d11-8ba9-395ed69df0bb</id>
+    <updated>2026-10-28T05:02:09.000Z</updated>
+    <published>2026-10-28T05:02:09.000Z</published>
+    <summary></summary>
+    <link href="https://localhost/tips-hermes/rangkuman-model-konfigurasi"/>
+    
+    <content type="html">
+      <![CDATA[ <h2>Ringkasan Sesi</h2>
+<p>Sesi ini membahas model agen, konfigurasi, environment, instalasi, cara pakai, langkah troubleshooting, dan rekomendasi.</p>
+
+<h2>Model Utama &amp; Fallback</h2>
+<ul>
+<li><strong>Model utama (efektif saat ini):</strong> <code>poolside/laguna-s-2.1-free</code> via provider <code>commandcode</code> (sumppod). Diatur di <code>/opt/data/home/.hermes/config.yaml</code> (user-level override).</li>
+<li><strong>Repo config:</strong> <code>hermes-repo/config.yaml</code> menyebut <code>glm-5.3-flash-free</code> via <code>opencode-free</code>, tapi di-timpa oleh user override.</li>
+<li><strong>Fallback (user override):</strong> <code>ling-3.1-flash</code> (commandcode) → <code>laguna-s-2.1-free</code> (commandcode) → <code>mimo-v2.5-free</code> (opencode-free).</li>
+<li><strong>Perubahan hari ini:</strong> Di <code>hermes-repo/config.yaml</code>, fallback commandcode urutan ke-4 diganti dari <code>deepseek/deepseek-v4.1-flash-fast</code> menjadi <code>deepseek/deepseek-v4.1-flash-cmc</code>.</li>
+</ul>
+
+<h2>MOA (Mixture of Agents)</h2>
+<ul>
+<li><strong>Reference models:</strong> <code>mimo-v2.5-free</code> &amp; <code>ling-3.0-flash-fin-free</code> (opencode-free) dijalankan paralel.</li>
+<li><strong>Aggregator:</strong> <code>nemotron-3-ultra-free</code> (opencode-free) menggabungkan jawaban.</li>
+<li><strong>Catatan:</strong> MOA adalah preset terpisah, bukan pengganti <code>model.default</code>. Tetap aktif di config (<code>moa.enabled: true</code>).</li>
+</ul>
+
+<h2>Environment / Env Vars</h2>
+<ul>
+<li><strong>User config:</strong> <code>/opt/data/home/.hermes/config.yaml</code> (API key via <code>SUMPOOD_API_KEY</code> untuk commandcode).</li>
+<li><strong>fcc-server:</strong> <code>/opt/data/home/.fcc/.env</code> (mengelola key <code>OPENROUTER_API_KEY</code>, <code>NVIDIA_NIM_API_KEY</code>, <code>OLLAMA_API_KEY</code> + <code>MODEL_FALLBACKS</code>).</li>
+<li><strong>Secrets:</strong> <code>.env</code> sudah di-<code>.gitignore</code> di <code>hermes-repo</code> (dihentikan tracking) tapi file lokal tetap ada.</li>
+</ul>
+
+<h2>Instalasi &amp; Status Layanan</h2>
+<ul>
+<li><strong>fcc-claude/fcc-server:</strong> Berada di <code>/opt/data/home/.fcc/</code>. Saat ini tidak terlihat proses aktif di <code>ps</code> - kemungkinan berjalan on-demand, via tmux/screen, pm2, atau systemd user.</li>
+<li><strong>opencode:</strong> Binary di <code>~/.opencode/bin</code> (tidak selalu di PATH). Biasanya dipanggil on-demand, bukan daemon permanen.</li>
+<li><strong>kilocode:</strong> Tidak terdeteksi proses/service aktif saat pengecekan.</li>
+<li><strong>Refresh model:</strong> Ada job "nightly free-model refresh" di history commit (pola malam), tapi jam pastinya tidak terlihat di crontab/systemd timer saat ini.</li>
+</ul>
+
+<h2>Cara Pakai</h2>
+<ul>
+<li><strong>Ganti model per sesi:</strong> Pakai <code>/model &lt;provider:model&gt;</code> di TUI/CLI (langsung berlaku, tidak mengubah config global).</li>
+<li><strong>Ganti model default:</strong> Edit <code>/opt/data/home/.hermes/config.yaml</code> (ubah <code>model.default</code>, <code>provider</code>, <code>api_key_env</code>, dan urutan <code>fallback_providers</code>).</li>
+<li><strong>Ganti cadangan:</strong> Tambah/urutkan model di <code>fallback_providers</code>. Jika kuota habis, fallback akan mencoba urutan berikutnya.</li>
+<li><strong>Lewat fcc/opencode:</strong> Tergantung jalur akses - <code>MODEL_FALLBACKS</code> di <code>.fcc/.env</code> bisa berpengaruh di sisi proxy.</li>
+</ul>
+
+<h2>Langkah Rekomendasi</h2>
+<ul>
+<li><strong>Prinsip konfigurasi:</strong> Pahami precedence (user override &gt; repo config &gt; built-in). Yang aktif saat ini ditentukan oleh <code>~/.hermes/config.yaml</code>.</li>
+<li><strong>Kelola memori:</strong> Gabungkan fakta serupa jadi 1 baris. Pindahkan prosedur ke skill via <code>skill_manage</code>. Hanya simpan fakta universal di <code>memory</code>.</li>
+<li><strong>Baca file efisien:</strong> Gunakan <code>offset/limit</code> kalau tidak butuh seluruh file.</li>
+<li><strong>Tugas berat/iteratif:</strong> Delegasikan ke subagent agar konteks utama tetap bersih.</li>
+<li><strong>Konsolidasi:</strong> Jika budget memory/profile &gt;80%, prioritaskan konsolidasi ketimbang menambah entri baru.</li>
+<li><strong>Biarkan kompresi:</strong> Fitur <code>compression</code> aktif - biarkan bekerja, tapi waspada saat membaca file besar berturut-turut.</li>
+<li><strong>Skill baru/tugas berulang:</strong> Simpan ke skill di sesi terpisah atau lanjutkan di sesi yang sama, lalu perbarui skill jika ada temuan/pitfall baru.</li>
+<li><strong>Keamanan:</strong> Jangan commit secrets. Repo private aman untuk melacak file, tapi tetap lebih baik menghindari jika bisa dipublikasi.</li>
 </ul> ]]>
     </content>
   </entry>

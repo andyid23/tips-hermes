@@ -72,7 +72,38 @@
         "created": 1793160744,
         "updated": 1793160744
       }
+    },
+    {
+      "id": "item-5f09a61f-3ead-41aa-95ba-f218bea0e851",
+      "indent": 0,
+      "location": "pages/item-5f09a61f-3ead-41aa-95ba-f218bea0e851/index.html",
+      "slug": "cmd-jev-nudge",
+      "order": 0,
+      "parent": null,
+      "title": "Cara Pakai cmd + jev-nudge",
+      "description": "",
+      "metadata": {
+        "created": 1793161337,
+        "updated": 1793161337,
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-2888d0c4-fd6c-4331-ac0b-9b3cccb0ff12",
+      "indent": 0,
+      "location": "pages/item-2888d0c4-fd6c-4331-ac0b-9b3cccb0ff12/index.html",
+      "slug": "haxcms-cek-repo-dulu",
+      "order": 0,
+      "parent": null,
+      "title": "Cek Repo Dulu Sebelum Buat Situs HAXCMS",
+      "description": "",
+      "metadata": {
+        "created": 1793162076,
+        "updated": 1793162076,
+        "images": [],
+        "videos": []
+      }
     }
-  ],
-  "location": "/_sites/tips-hermes/index.html"
+  ]
 }
