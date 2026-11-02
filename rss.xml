@@ -72,5 +72,12 @@
       <guid>https://localhost/tips-hermes/akses-ssh-hermes-via-cloudflare-tunnel</guid>
       <pubDate>Mon, 02 Nov 2026 03:13:52 GMT</pubDate>
     </item>
+    <item>
+      <title>Akses SSH ke Hermes via Cloudflare Tunnel (SumoPod)</title>
+      <link>https://localhost/tips-hermes/akses-ssh-hermes-via-cloudflare-tunnel-sumopod</link>
+      <description>Latar Belakang Di beberapa provider seperti SumoPod, nggak disediain raw TCP port forwarding buat SSH langsung (IP:Port). Satu-satunya cara biar bisa SSH stabil adalah dengan menjalankan cloudflared di dalam container dan membuat SSH tunnel lewat Cloudflare. Langkah-langkah 1) Tambahin public key client ke target (wajib di /root/.ssh/) Dari laptop/client ambil public key: cat ~/.ssh/id_ed25519.pub Buka web console target dan login sebagai root , lalu tambahin ke authorized_keys milik root: mk...</description>
+      <guid>https://localhost/tips-hermes/akses-ssh-hermes-via-cloudflare-tunnel-sumopod</guid>
+      <pubDate>Mon, 02 Nov 2026 03:44:51 GMT</pubDate>
+    </item>
   </channel>
 </rss>
