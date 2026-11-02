@@ -18,7 +18,9 @@ Managed files (feeds, search indexes, manifests, and this `llms.txt`) are genera
 - [Cara Pakai fcc-claude, Plugin PRAW HAX, OpenCode & Langkah Instalasi](https://localhost/tips-hermes/pages/item-0f546a47-a4e2-416b-9747-6be73c0d63f2/index.md)
 - [Konfigurasi SSH Tanpa Password via Cloudflare Tunnel](https://localhost/tips-hermes/pages/item-101c5a71-e8ac-4e19-a7d7-ab1818f3b4a5/index.md)
 - [Rangkuman Sesi: Model, Konfigurasi, Env, Instalasi, Cara Pakai, Langkah & Rekomendasi](https://localhost/tips-hermes/pages/item-5cc3374b-46d7-4d11-8ba9-395ed69df0bb/index.md)
+- [Akses SSH ke Hermes via Cloudflare Tunnel (SumoPod)](https://localhost/tips-hermes/pages/item-cab8a2f4-59b2-4b56-8847-d4b781892827/index.md)
 - [Rangkuman Sesi - Free Claude Code & HAXCMS](https://localhost/tips-hermes/pages/rangkuman_sesi.md.md): Ringkasan agent, fcc-server, HAXCMS, Command Code + jev-nudge
+- [Menggunakan typesafe/jev sebagai Decision Model di Command Code CLI](https://localhost/tips-hermes/pages/item-f335ac72-4b05-4cb2-b5fa-c1400a67ba73/index.md): Panduan penggunaan typesafe/jev sebagai decision model: format JSON, tipe noul/choice/score, langkah auth, sesi, tuning jev-nudge, dan rekomendasi
 
 ## Optional
 - [Search index](https://localhost/tips-hermes/lunrSearchIndex.json): Lunr corpus for quick full-text retrieval.
