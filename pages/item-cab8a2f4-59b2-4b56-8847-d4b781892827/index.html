@@ -1,0 +1,77 @@
+<h2>Latar Belakang</h2>
+<p>Di beberapa provider seperti SumoPod, <strong>nggak disediain raw TCP port forwarding</strong> buat SSH langsung (IP:Port). Satu-satunya cara biar bisa SSH stabil adalah dengan menjalankan <code>cloudflared</code> di dalam container dan membuat SSH tunnel lewat Cloudflare.</p>
+
+<h2>Langkah-langkah</h2>
+
+<h3>1) Tambahin public key client ke target (wajib di /root/.ssh/)</h3>
+<p>Dari laptop/client ambil public key:</p>
+<pre><code>cat ~/.ssh/id_ed25519.pub</code></pre>
+<p>Buka web console target dan login sebagai <strong>root</strong>, lalu tambahin ke <code>authorized_keys</code> milik root:</p>
+<pre><code>mkdir -p /root/.ssh
+chmod 700 /root/.ssh
+echo "&lt;PASTE_PUBLIC_KEY_KAMU&gt;" &gt;&gt; /root/.ssh/authorized_keys
+chmod 600 /root/.ssh/authorized_keys
+cat /root/.ssh/authorized_keys</code></pre>
+<p><strong>Penting:</strong> <code>sshd</code> membaca key dari <code>/root/.ssh/authorized_keys</code>, bukan dari home user <code>hermes</code>.</p>
+
+<h3>2) Setup Cloudflare Tunnel di container</h3>
+<p>Cek binary cloudflared (biasanya ada di <code>/opt/data/home/.local/bin/cloudflared</code>).</p>
+<pre><code>export HOME=/opt/data/home
+export CLOUDFLARED_HOME=/opt/data/home/.cloudflared
+mkdir -p $CLOUDFLARED_HOME
+
+/opt/data/home/.local/bin/cloudflared tunnel login
+/opt/data/home/.local/bin/cloudflared tunnel create ssh-hermes-&lt;nama&gt;</code></pre>
+<p>Catat <strong>Tunnel UUID</strong> dan file <code>&lt;UUID&gt;.json</code> yang muncul.</p>
+
+<h3>3) Salin cert &amp; credentials ke lokasi writable</h3>
+<p>File <code>cert.pem</code> dan credentials JSON kerap dimiliki <code>root</code> dan nggak bisa dibaca user <code>hermes</code>. Salin dari web console <strong>root</strong>:</p>
+<pre><code>mkdir -p /opt/data/cf-ssh
+cp /opt/data/home/.cloudflared/cert.pem /opt/data/cf-ssh/
+cp /opt/data/home/.cloudflared/&lt;UUID&gt;.json /opt/data/cf-ssh/
+chown -R hermes:hermes /opt/data/cf-ssh
+chmod 600 /opt/data/cf-ssh/*</code></pre>
+
+<h3>4) Buat config, route DNS &amp; jalankan tunnel</h3>
+<p>Buat config di sesi <code>hermes</code>:</p>
+<pre><code>cat &gt; /opt/data/cloudflared-ssh-config.yml &lt;&lt; 'EOF'
+tunnel: &lt;UUID&gt;
+credentials-file: /opt/data/cf-ssh/&lt;UUID&gt;.json
+ingress:
+  - hostname: ssh-&lt;nama&gt;.&lt;domain&gt;.com
+    service: ssh://localhost:22
+  - service: http_status:404
+EOF</code></pre>
+<p>Route DNS dan jalankan di background:</p>
+<pre><code>export HOME=/opt/data/home
+export CLOUDFLARED_HOME=/opt/data/cf-ssh
+
+/opt/data/home/.local/bin/cloudflared tunnel route dns ssh-hermes-&lt;nama&gt; ssh-&lt;nama&gt;.&lt;domain&gt;.com
+
+nohup /opt/data/home/.local/bin/cloudflared tunnel --config /opt/data/cloudflared-ssh-config.yml run &lt;UUID&gt; &gt; /opt/data/cloudflared-ssh.log 2&gt;&amp;1 &amp;</code></pre>
+
+<h3>5) Setup di laptop/client</h3>
+<p>Tambahin ke <code>~/.ssh/config</code>:</p>
+<pre><code>Host hermes-tunnel
+    HostName ssh-&lt;nama&gt;.&lt;domain&gt;.com
+    User root
+    Port 22
+    ProxyCommand cloudflared access ssh --hostname %h
+    StrictHostKeyChecking accept-new
+    ServerAliveInterval 60
+    ServerAliveCountMax 120
+    IdentitiesOnly yes</code></pre>
+<p>Lalu coba konek:</p>
+<pre><code>ssh hermes-tunnel</code></pre>
+
+<h2>Catatan Penting &amp; Troubleshooting</h2>
+<ul>
+  <li><strong>Key location:</strong> Wajib ditambahin ke <code>/root/.ssh/authorized_keys</code>. Kalo cuma ditambahin ke home user lain, SSH tetap ditolak.</li>
+  <li><strong>Permission issues:</strong> Kalo <code>cert.pem</code> atau credentials JSON dimiliki <code>root</code> dan nggak bisa dibaca <code>hermes</code>, <strong>copy</strong> ke folder writable (mis. <code>/opt/data/cf-ssh/</code>), ubah owner ke <code>hermes</code>, dan set <code>CLOUDFLARED_HOME=/opt/data/cf-ssh</code>.</li>
+  <li><strong>ProxyCommand wajib:</strong> Karena nggak ada raw TCP, client harus pakai <code>ProxyCommand cloudflared access ssh --hostname %h</code>.</li>
+  <li><strong>Tunnel name vs UUID:</strong> <code>tunnel route dns</code> pakai <strong>nama tunnel</strong>, <code>tunnel run</code> bisa pakai <strong>UUID</strong>.</li>
+  <li><strong>Background tetap jalan:</strong> Pakai <code>nohup</code> biar tunnel nggak mati pas web console disconnect.</li>
+</ul>
+
+<h2>Skill Terkait</h2>
+<p>Langkah ini udah disimpan di skill <code>ssh-access-hermes</code> (kategori <code>software-development</code>) biar bisa dipake buat setup serupa ke instance Hermes lain.</p>
